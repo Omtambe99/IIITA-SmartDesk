@@ -55,6 +55,8 @@ router.post("/login", async (req, res) => {
         // { email: email, role: signIn, name: user.name } -> this the data encoding in the token,only visible to one having the token
         // 
 
+        // const token =jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1h" });
+
         const token = jwt.sign({ email: email, role: signIn, name: user.name }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // Exclude password and possibly other sensitive information
