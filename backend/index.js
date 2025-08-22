@@ -1,8 +1,8 @@
-// calling .config() ehich reads .env file and 
+// calling .config() ehich reads .env file and
 // loads all the environment variables
-require('dotenv').config();
+require("dotenv").config();
 // multer is lib that handle file upload (images,pdfs)
-const multer = require('multer');
+const multer = require("multer");
 
 // Your routes import a different upload middleware from middleware/Upload.js
 // we can remove upload
@@ -18,9 +18,9 @@ const app = express();
 // cors lib package automatically sets the correct HTTP header so broweser knows yours backend allows requests from another origin
 const cors = require("cors");
 
-// JSON parsing 
+// JSON parsing
 // In modern Express you can instead do app.use(express.json()). body-parser still works but express.json() is built-in.
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 // each of these load routes modelules
 // ex. /routes/student is code that handles the /student request
@@ -48,19 +48,19 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // request /student-> hands it to the studentRouter as imported above
-app.use("/student",studentRouter);
-app.use("/admin",adminRouter);
-app.use("/course",courseRouter);
-app.use("/post",postRouter);
-app.use("/professor",professorRouter);
-app.use("/user",userLoginRouter)
-app.use("/markAttendance",attendanceRouter);
-app.use("/viewAttendance",viewAttendanceRouter);
-app.use("/results",resultRouter);
-app.use("/todo",todoRouter);
+app.use("/student", studentRouter);
+app.use("/admin", adminRouter);
+app.use("/course", courseRouter);
+app.use("/post", postRouter);
+app.use("/professor", professorRouter);
+app.use("/user", userLoginRouter);
+app.use("/markAttendance", attendanceRouter);
+app.use("/viewAttendance", viewAttendanceRouter);
+app.use("/results", resultRouter);
+app.use("/todo", todoRouter);
 
 // process.env.PORT means reads the port value from the .enc file
-const PORT =process.env.PORT || 5000;
-app.listen(5000,()=>{
-    console.log("Server started running")
-})
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server started running on port ${PORT}`);
+});
